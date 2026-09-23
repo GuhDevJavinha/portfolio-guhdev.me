@@ -64,9 +64,6 @@ export function ContactCard(): ReactNode {
                   <p className="text-[13px] tracking-tight text-foreground/70">
                     {t.contact.footerBuiltWith}
                   </p>
-                  <p className="text-[12px] tracking-tight text-foreground/45">
-                    {t.contact.footerBy}
-                  </p>
                 </div>
               </div>
             </div>
