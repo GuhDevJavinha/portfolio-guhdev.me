@@ -7,7 +7,8 @@ export const ptBR: Dictionary = {
     about: "Sobre",
   },
   hero: {
-    greetingPrefix: "Olá",
+    greetingPrefix: "Oi",
+    greetingSuffix: ", eu sou o",
     name: "Josh",
     headlineLine1: "Engenheiro de design &",
     headlineLine2: "entusiasta de IA",

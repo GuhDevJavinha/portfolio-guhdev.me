@@ -1,6 +1,6 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
+import { Languages, Moon, Sun } from "lucide-react";
 import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
@@ -14,16 +14,12 @@ import {
   type ReactNode,
 } from "react";
 
+import { useLanguage } from "@/_data/i18n/language-provider";
+
 type NavItem = {
   label: string;
   href: string;
 };
-
-const NAV_ITEMS: readonly NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "Projects", href: "/projects" },
-  { label: "About", href: "/about" },
-];
 
 function useIsMounted(): boolean {
   return useSyncExternalStore(
@@ -111,8 +107,33 @@ function NavThemeToggle(): ReactNode {
   );
 }
 
+function NavLanguageToggle(): ReactNode {
+  const { locale, toggleLocale } = useLanguage();
+  const isPtBR = locale === "pt-BR";
+
+  return (
+    <button
+      type="button"
+      onClick={toggleLocale}
+      aria-label={isPtBR ? "Switch to English" : "Mudar para português"}
+      className="focus-ring relative inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-background ring-1 ring-foreground/8 transition-colors"
+    >
+      <Languages
+        className="h-4 w-4 text-foreground"
+        aria-hidden="true"
+      />
+    </button>
+  );
+}
+
 export function Nav(): ReactNode {
+  const { t } = useLanguage();
   const pathname = usePathname();
+  const NAV_ITEMS: readonly NavItem[] = [
+    { label: t.nav.home, href: "/" },
+    { label: t.nav.projects, href: "/projects" },
+    { label: t.nav.about, href: "/about" },
+  ];
   const listRef = useRef<HTMLUListElement>(null);
   const itemRefs = useRef<Array<HTMLLIElement | null>>([]);
   const [pillRect, setPillRect] = useState<{
@@ -200,6 +221,7 @@ export function Nav(): ReactNode {
           })}
         </ul>
         <NavThemeToggle />
+        <NavLanguageToggle />
       </div>
     </nav>
   );

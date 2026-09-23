@@ -4,81 +4,27 @@ import { ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState, type ReactNode } from "react";
 
-type Entry = {
-  company: string;
-  role: string;
-  period: string;
-  slug?: string;
-  brand?: string;
-};
-
-const ENTRIES: Entry[] = [
-  {
-    company: "Linear",
-    role: "Senior Design Engineer",
-    period: "Mar 2024 – Present",
-    slug: "linear",
-    brand: "#5E6AD2",
-  },
-  {
-    company: "Vercel",
-    role: "Product Designer",
-    period: "Aug 2022 – Feb 2024",
-    slug: "vercel",
-    brand: "#0a0a0a",
-  },
-  {
-    company: "Stripe",
-    role: "Design Engineer",
-    period: "Jun 2021 – Jul 2022",
-    slug: "stripe",
-    brand: "#635BFF",
-  },
-  {
-    company: "Figma",
-    role: "UI Engineer",
-    period: "Sep 2019 – May 2021",
-    slug: "figma",
-    brand: "#A259FF",
-  },
-  {
-    company: "Notion",
-    role: "Product Designer",
-    period: "Jan 2018 – Aug 2019",
-    slug: "notion",
-    brand: "#111111",
-  },
-  {
-    company: "Airbnb",
-    role: "Design Intern",
-    period: "May 2017 – Dec 2017",
-    slug: "airbnb",
-    brand: "#FF5A5F",
-  },
-  {
-    company: "Freelance",
-    role: "Designer & Developer",
-    period: "2015 – 2017",
-    brand: "#0AE448",
-  },
-];
+import { EXPERIENCE_ENTRIES, type ExperienceEntry } from "@/_data/about/experience";
+import { useLanguage } from "@/_data/i18n/language-provider";
 
 const COLLAPSED_COUNT = 2.5;
 const ROW_HEIGHT = 64;
 const ROW_GAP = 8;
 
 export function Experience(): ReactNode {
+  const { t, locale } = useLanguage();
+  const localeKey = locale === "pt-BR" ? "pt" : "en";
   const [open, setOpen] = useState(false);
   const collapsedHeight =
     Math.floor(COLLAPSED_COUNT) * ROW_HEIGHT +
     Math.floor(COLLAPSED_COUNT) * ROW_GAP +
     (COLLAPSED_COUNT % 1) * ROW_HEIGHT;
-  const hiddenCount = ENTRIES.length - Math.floor(COLLAPSED_COUNT);
+  const hiddenCount = EXPERIENCE_ENTRIES.length - Math.floor(COLLAPSED_COUNT);
 
   return (
     <div className="flex flex-col gap-3">
       <h3 className="text-foreground text-[15px] font-semibold tracking-tight">
-        Experience
+        {t.about.experienceTitle}
       </h3>
       <div
         className={`border-foreground/5 bg-foreground/2 dark:bg-foreground/5 relative overflow-hidden rounded-4xl border px-2 pt-2 sm:px-4 sm:pt-4 ${
@@ -95,7 +41,7 @@ export function Experience(): ReactNode {
           style={{ overflow: "hidden" }}
         >
           <ul className="flex flex-col gap-2">
-            {ENTRIES.map((entry) => (
+            {EXPERIENCE_ENTRIES.map((entry) => (
               <li
                 key={`${entry.company}-${entry.period}`}
                 className="bg-background border-foreground/5 flex items-center gap-4 rounded-3xl border p-2"
@@ -107,7 +53,7 @@ export function Experience(): ReactNode {
                     {entry.company}
                   </span>
                   <span className="text-foreground/65 mt-0.5 text-[14px] tracking-tight sm:text-[15px]">
-                    {entry.role}
+                    {entry.role[localeKey]}
                     <span className="text-foreground/30 mx-2">•</span>
                     <span className="text-foreground/55">{entry.period}</span>
                   </span>
@@ -151,7 +97,7 @@ export function Experience(): ReactNode {
                 : "absolute inset-x-0 bottom-0 z-10 py-3 sm:py-4"
             }`}
           >
-            {open ? "Show less" : `Show ${hiddenCount} more`}
+            {open ? t.about.showLess : t.about.showMore(hiddenCount)}
             <motion.span
               animate={{ rotate: open ? 180 : 0 }}
               transition={{ duration: 0.25 }}
@@ -166,7 +112,7 @@ export function Experience(): ReactNode {
   );
 }
 
-function CompanyLogo({ entry }: { entry: Entry }): ReactNode {
+function CompanyLogo({ entry }: { entry: ExperienceEntry }): ReactNode {
   const initials = entry.company.charAt(0);
   return (
     <span

@@ -1,41 +1,24 @@
+"use client";
+
 import type { ReactNode } from "react";
 
-type Entry = {
-  school: string;
-  degree: string;
-  period: string;
-  slug?: string;
-};
-
-const ENTRIES: Entry[] = [
-  {
-    school: "Rhode Island School of Design",
-    degree: "BFA, Graphic Design",
-    period: "2013 – 2017",
-  },
-  {
-    school: "Stanford University",
-    degree: "HCI Certificate, d.school",
-    period: "2018",
-  },
-  {
-    school: "Bruno Simon's Three.js Journey",
-    degree: "WebGL & Shaders",
-    period: "2022",
-  },
-];
+import { EDUCATION_ENTRIES, type EducationEntry } from "@/_data/about/education";
+import { useLanguage } from "@/_data/i18n/language-provider";
 
 const ROW_HEIGHT = 64;
 
 export function Education(): ReactNode {
+  const { t, locale } = useLanguage();
+  const localeKey = locale === "pt-BR" ? "pt" : "en";
+
   return (
     <div className="flex flex-col gap-3">
       <h3 className="text-foreground text-[15px] font-semibold tracking-tight">
-        Education
+        {t.about.educationTitle}
       </h3>
       <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 relative rounded-4xl border p-2 sm:p-4">
         <ul className="flex flex-col gap-2">
-          {ENTRIES.map((entry) => (
+          {EDUCATION_ENTRIES.map((entry) => (
             <li
               key={`${entry.school}-${entry.period}`}
               className="bg-background border-foreground/5 flex items-center gap-4 rounded-3xl border p-2"
@@ -47,7 +30,7 @@ export function Education(): ReactNode {
                   {entry.school}
                 </span>
                 <span className="text-foreground/65 mt-0.5 text-[14px] tracking-tight sm:text-[15px]">
-                  {entry.degree}
+                  {entry.degree[localeKey]}
                   <span className="text-foreground/30 mx-2">•</span>
                   <span className="text-foreground/55">{entry.period}</span>
                 </span>
@@ -60,7 +43,7 @@ export function Education(): ReactNode {
   );
 }
 
-function SchoolLogo({ entry }: { entry: Entry }): ReactNode {
+function SchoolLogo({ entry }: { entry: EducationEntry }): ReactNode {
   const initials = entry.school.charAt(0);
   return (
     <span

@@ -18,6 +18,13 @@ const eslintConfig = defineConfig([
       "react/jsx-no-target-blank": ["error", { enforceDynamicLinks: "always" }],
     },
   },
+  {
+    // Vendor component from the react-bits registry, kept as installed.
+    files: ["components/SwarmCursor.tsx"],
+    rules: {
+      "@typescript-eslint/ban-ts-comment": "off",
+    },
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

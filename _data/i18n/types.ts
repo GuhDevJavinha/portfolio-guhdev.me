@@ -18,6 +18,7 @@ export type Dictionary = {
   };
   hero: {
     greetingPrefix: string;
+    greetingSuffix: string;
     name: string;
     headlineLine1: string;
     headlineLine2: string;

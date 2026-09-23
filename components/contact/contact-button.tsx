@@ -5,10 +5,13 @@ import { Check, Copy, Mail } from "lucide-react";
 import { useState } from "react";
 import type { ReactNode } from "react";
 
+import { useLanguage } from "@/_data/i18n/language-provider";
+
 const EMAIL = "hello@example.com";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function ContactButton(): ReactNode {
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -43,7 +46,11 @@ export function ContactButton(): ReactNode {
       onFocus={() => setOpen(true)}
       onBlur={() => setOpen(false)}
       aria-label={
-        copied ? "Email copied" : open ? `Copy ${EMAIL}` : "Show email"
+        copied
+          ? t.contact.emailCopiedLabel
+          : open
+            ? `${t.contact.copyLabelPrefix} ${EMAIL}`
+            : t.contact.showEmailLabel
       }
       transition={{ layout: { duration: 0.55, ease: EASE } }}
       style={{ borderRadius: 12 }}
@@ -104,7 +111,7 @@ export function ContactButton(): ReactNode {
               className="inline-flex items-center gap-2 whitespace-nowrap"
             >
               <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
-              <span>Contact</span>
+              <span>{t.contact.contactLabel}</span>
             </motion.span>
           )}
         </AnimatePresence>
