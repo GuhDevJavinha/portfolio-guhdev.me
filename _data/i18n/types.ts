@@ -35,7 +35,6 @@ export type Dictionary = {
     body: string;
     seeProjects: string;
     footerBuiltWith: string;
-    footerBy: string;
     emailAriaLabel: string;
     linkedinAriaLabel: string;
     githubAriaLabel: string;
