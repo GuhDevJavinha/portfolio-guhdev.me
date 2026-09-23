@@ -1,7 +1,6 @@
 "use client";
 
-import { Mail } from "lucide-react";
-import Image from "next/image";
+import { EnvelopeSimple, GithubLogo, LinkedinLogo, type Icon } from "@phosphor-icons/react";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
@@ -46,19 +45,19 @@ export function ContactCard(): ReactNode {
               <div className="border-foreground/8 flex flex-col items-center justify-center gap-6 rounded-[1.1rem] border bg-background p-6 sm:p-8">
                 <div className="flex items-center gap-3 opacity-75">
                   <SocialIcon
-                    href="mailto:hello@example.com"
+                    href="mailto:gustavo.rsilva08@gmail.com"
                     label={t.contact.emailAriaLabel}
-                    lucideIcon={Mail}
+                    icon={EnvelopeSimple}
                   />
                   <SocialIcon
-                    href="https://www.linkedin.com"
+                    href="https://www.linkedin.com/in/gustavo-r13/"
                     label={t.contact.linkedinAriaLabel}
-                    imageSrc="/linkedin.svg"
+                    icon={LinkedinLogo}
                   />
                   <SocialIcon
-                    href="https://x.com"
-                    label={t.contact.xAriaLabel}
-                    imageSrc="/x.svg"
+                    href="https://github.com/GuhDevJavinha"
+                    label={t.contact.githubAriaLabel}
+                    icon={GithubLogo}
                   />
                 </div>
                 <div className="flex flex-col items-center gap-1 text-center">
@@ -81,13 +80,11 @@ export function ContactCard(): ReactNode {
 function SocialIcon({
   href,
   label,
-  lucideIcon: LucideIcon,
-  imageSrc,
+  icon: Icon,
 }: {
   href: string;
   label: string;
-  lucideIcon?: React.ComponentType<{ className?: string; strokeWidth?: number }>;
-  imageSrc?: string;
+  icon: Icon;
 }): ReactNode {
   const isExternal = href.startsWith("http");
   const props = isExternal
@@ -100,18 +97,7 @@ function SocialIcon({
       className="border-foreground/8 hover:border-foreground/15 focus-ring inline-flex h-11 w-11 items-center justify-center rounded-xl border bg-background text-foreground/70 transition-colors hover:text-foreground"
       {...props}
     >
-      {LucideIcon ? (
-        <LucideIcon className="h-4 w-4" strokeWidth={2.5} aria-hidden="true" />
-      ) : imageSrc ? (
-        <Image
-          src={imageSrc}
-          alt=""
-          width={14}
-          height={14}
-          aria-hidden="true"
-          className="max-h-[14px] max-w-[14px] object-contain dark:invert"
-        />
-      ) : null}
+      <Icon className="h-4 w-4" weight="bold" aria-hidden="true" />
     </Link>
   );
 }

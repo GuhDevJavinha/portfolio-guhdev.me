@@ -7,7 +7,7 @@ import type { ReactNode } from "react";
 
 import { useLanguage } from "@/_data/i18n/language-provider";
 
-const EMAIL = "hello@example.com";
+const EMAIL = "gustavo.rsilva08@gmail.com";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function ContactButton(): ReactNode {

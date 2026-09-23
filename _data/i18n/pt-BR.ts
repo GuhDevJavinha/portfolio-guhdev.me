@@ -9,12 +9,12 @@ export const ptBR: Dictionary = {
   hero: {
     greetingPrefix: "Oi",
     greetingSuffix: ", eu sou o",
-    name: "Josh",
-    headlineLine1: "Engenheiro de design &",
-    headlineLine2: "entusiasta de IA",
+    name: "Gustavo",
+    headlineLine1: "Software Engineer &",
+    headlineLine2: "AI Engineer",
     subtitle:
-      "Engenheiro independente focado em interfaces que parecem calmas, bem pensadas e silenciosamente rápidas.",
-    portraitAlt: "Retrato de Josh",
+      "Desenvolvedor Java/Spring com foco em AWS, construindo sistemas backend robustos e soluções de IA generativa.",
+    portraitAlt: "Retrato de Gustavo",
     viewWork: "Ver meu trabalho",
   },
   contact: {
@@ -29,7 +29,7 @@ export const ptBR: Dictionary = {
     footerBy: "Por React Bits Pro",
     emailAriaLabel: "E-mail",
     linkedinAriaLabel: "LinkedIn",
-    xAriaLabel: "X",
+    githubAriaLabel: "GitHub",
   },
   projects: {
     headline: "Meus projetos",
@@ -42,36 +42,39 @@ export const ptBR: Dictionary = {
   },
   about: {
     greeting: "Olá! Eu sou",
-    name: "Josh Mercer",
+    name: "Gustavo",
     intro: [
       [
         { text: "Um " },
-        { text: "designer de produto e engenheiro frontend", bold: true },
+        { text: "Software Engineer e AI Engineer", bold: true },
         {
-          text: " apaixonado por construir experiências digitais intuitivas e centradas no ser humano. Com uma base em ",
+          text: " apaixonado por construir sistemas backend robustos e soluções de IA generativa. Sou desenvolvedor ",
         },
-        { text: "arte visual", bold: true },
-        { text: " e " },
-        { text: "design de interação", bold: true },
+        { text: "Java/Spring", bold: true },
+        { text: " com foco em " },
+        { text: "AWS", bold: true },
         {
-          text: ", trago uma combinação única de pensamento de design e execução técnica para cada projeto.",
-        },
-      ],
-      [
-        {
-          text: "Minha jornada no design começou quando percebi o quanto uma boa experiência do usuário estava ausente em ferramentas poderosas. Isso me levou a abraçar o ",
-        },
-        { text: "design centrado no usuário", bold: true },
-        {
-          text: " como mentalidade e ofício, equilibrando clareza, criatividade e funcionalidade.",
+          text: ", trazendo uma combinação de arquitetura sólida e execução técnica para cada projeto.",
         },
       ],
       [
-        { text: "Atualmente liderando o design em pequenas equipes de produto que criam software para " },
-        { text: "profissionais criativos", bold: true },
-        { text: ", estou sempre em busca de oportunidades para " },
         {
-          text: "moldar interfaces bem pensadas e construir sistemas de design escaláveis",
+          text: "Trabalho com um stack amplo que passa por ",
+        },
+        {
+          text: "Next.js, Docker, GCP, Kubernetes, Kafka, DynamoDB, MySQL e PostgreSQL",
+          bold: true,
+        },
+        {
+          text: ", sempre buscando a ferramenta certa para cada problema em vez de me limitar a uma única pilha.",
+        },
+      ],
+      [
+        { text: "Comecei na área dando suporte de TI, passei por " },
+        { text: "monitoramento e observabilidade", bold: true },
+        { text: " e hoje atuo como " },
+        {
+          text: "engenheiro de software construindo produtos com Java, Spring, Next.js e IA na AWS",
           bold: true,
         },
         { text: "." },
