@@ -25,7 +25,7 @@ export const enUS: Dictionary = {
     heading: "Let's connect",
     body: "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Just reach out!",
     seeProjects: "See projects",
-    footerBuiltWith: "2026 © Built with Gustavo Ribeiro",
+    footerBuiltWith: "2026 © Made by Gustavo Ribeiro",
     emailAriaLabel: "Email",
     linkedinAriaLabel: "LinkedIn",
     githubAriaLabel: "GitHub",

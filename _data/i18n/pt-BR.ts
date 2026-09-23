@@ -25,7 +25,7 @@ export const ptBR: Dictionary = {
     heading: "Vamos conversar",
     body: "Estou sempre aberto a discutir novos projetos, ideias criativas ou oportunidades de fazer parte das suas visões. É só chamar!",
     seeProjects: "Ver projetos",
-    footerBuiltWith: "2026 © Feito com Gustavo Ribeiro",
+    footerBuiltWith: "2026 © Feito por Gustavo Ribeiro",
     emailAriaLabel: "E-mail",
     linkedinAriaLabel: "LinkedIn",
     githubAriaLabel: "GitHub",
