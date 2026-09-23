@@ -114,22 +114,23 @@ export function Experience(): ReactNode {
 
 function CompanyLogo({ entry }: { entry: ExperienceEntry }): ReactNode {
   const initials = entry.company.charAt(0);
+  const iconSrc = entry.logo ?? (entry.slug ? `https://cdn.simpleicons.org/${entry.slug}` : undefined);
   return (
     <span
       className="ring-foreground/8 inline-flex h-12 w-12 shrink-0 items-center justify-center bg-white ring-1 dark:ring-white/10"
       aria-hidden="true"
       style={{
         borderRadius: 14,
-        ...(entry.slug ? {} : { backgroundColor: entry.brand }),
+        ...(iconSrc ? {} : { backgroundColor: entry.brand }),
       }}
     >
-      {entry.slug ? (
+      {iconSrc ? (
         <img
-          src={`https://cdn.simpleicons.org/${entry.slug}`}
+          src={iconSrc}
           alt=""
-          width={24}
-          height={24}
-          className="h-6 w-6"
+          width={entry.logo ? 32 : 24}
+          height={entry.logo ? 32 : 24}
+          className={entry.logo ? "h-8 w-8 object-contain" : "h-6 w-6"}
           draggable={false}
         />
       ) : (

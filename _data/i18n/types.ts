@@ -53,6 +53,7 @@ export type Dictionary = {
     intro: RichSegment[][];
     experienceTitle: string;
     educationTitle: string;
+    certificatesTitle: string;
     skillsTitle: string;
     stackTitle: string;
     showMore: (hiddenCount: number) => string;

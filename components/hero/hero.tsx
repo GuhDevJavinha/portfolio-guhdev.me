@@ -27,10 +27,10 @@ export function Hero(): ReactNode {
             </p>
 
             <h1 className="text-[2.75rem] font-medium leading-[1.05] tracking-tight text-foreground md:text-[2.5rem] lg:text-[3.65rem]">
-              <span className="block whitespace-nowrap">
+              <span className="block sm:whitespace-nowrap">
                 {t.hero.headlineLine1}
               </span>
-              <span className="block whitespace-nowrap">
+              <span className="block sm:whitespace-nowrap">
                 {t.hero.headlineLine2}
               </span>
             </h1>

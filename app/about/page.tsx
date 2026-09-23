@@ -1,4 +1,5 @@
 import { AboutIntro } from "@/components/about/about-intro";
+import { Certificates } from "@/components/about/certificates";
 import { Education } from "@/components/about/education";
 import { Experience } from "@/components/about/experience";
 import { PolaroidStrip } from "@/components/about/polaroid-strip";
@@ -36,6 +37,7 @@ export default function AboutPage(): ReactNode {
           <div className="flex flex-col gap-10">
             <Experience />
             <Education />
+            <Certificates />
             <Skills />
             <Stack />
           </div>

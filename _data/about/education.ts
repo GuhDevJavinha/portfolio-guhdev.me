@@ -9,21 +9,11 @@ export type EducationEntry = {
 
 export const EDUCATION_ENTRIES: EducationEntry[] = [
   {
-    school: "Rhode Island School of Design",
-    degree: { pt: "Bacharelado, Design Gráfico", en: "BFA, Graphic Design" },
-    period: "2013 – 2017",
-  },
-  {
-    school: "Stanford University",
+    school: "UNIP",
     degree: {
-      pt: "Certificado em HCI, d.school",
-      en: "HCI Certificate, d.school",
+      pt: "Tecnólogo em Análise e Desenvolvimento de Sistemas",
+      en: "Associate Degree in Systems Analysis and Development",
     },
-    period: "2018",
-  },
-  {
-    school: "Bruno Simon's Three.js Journey",
-    degree: { pt: "WebGL e Shaders", en: "WebGL & Shaders" },
-    period: "2022",
+    period: "2023 – 2026",
   },
 ];
