@@ -2,6 +2,8 @@
 import React, { useEffect, useRef } from 'react';
 import { Renderer, Program, Mesh, Geometry, Triangle, RenderTarget } from 'ogl';
 
+import { isWebglAvailable } from '@/components/webgl-support';
+
 const FIELD_VERT = `
 precision highp float;
 attribute vec2 position;
@@ -219,10 +221,17 @@ const SwarmCursor = ({
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+    if (!isWebglAvailable()) return;
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const renderer = new Renderer({ alpha: true, dpr: Math.min(window.devicePixelRatio || 1, 1.75) });
+    let renderer: Renderer;
+    try {
+      renderer = new Renderer({ alpha: true, dpr: Math.min(window.devicePixelRatio || 1, 1.75) });
+    } catch (err) {
+      console.error('Failed to create WebGL renderer', err);
+      return;
+    }
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
     gl.canvas.className = 'absolute inset-0 w-full h-full block pointer-events-none select-none';

@@ -3,6 +3,8 @@
 import { Mesh, Program, Renderer, Transform, Triangle } from "ogl";
 import { useEffect, useRef, type ReactNode } from "react";
 
+import { isWebglAvailable } from "@/components/webgl-support";
+
 export type ShaderFlowProps = {
   className?: string;
   flowSpeed?: [number, number];
@@ -137,13 +139,20 @@ export function ShaderFlow(props: ShaderFlowProps): ReactNode {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    if (!isWebglAvailable()) return;
 
-    const r = new Renderer({
-      dpr: Math.min(window.devicePixelRatio || 1, 1),
-      alpha: false,
-      antialias: false,
-      powerPreference: "high-performance",
-    });
+    let r: Renderer;
+    try {
+      r = new Renderer({
+        dpr: Math.min(window.devicePixelRatio || 1, 1),
+        alpha: false,
+        antialias: false,
+        powerPreference: "high-performance",
+      });
+    } catch (err) {
+      console.error("Failed to create WebGL renderer", err);
+      return;
+    }
     const gl = r.gl;
     gl.canvas.style.width = "100%";
     gl.canvas.style.height = "100%";
