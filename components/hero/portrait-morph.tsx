@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { Renderer, Program, Mesh, Triangle, Transform, Texture } from "ogl";
 
-import { isWebglAvailable } from "@/components/webgl-support";
-
 export type PortraitMorphProps = {
   srcA: string;
   srcB: string;
@@ -133,19 +131,12 @@ export function PortraitMorph({
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    if (!isWebglAvailable()) return;
 
-    let renderer: Renderer;
-    try {
-      renderer = new Renderer({
-        alpha: true,
-        premultipliedAlpha: false,
-        dpr: Math.min(window.devicePixelRatio || 1, 2),
-      });
-    } catch (err) {
-      console.error("Failed to create WebGL renderer", err);
-      return;
-    }
+    const renderer = new Renderer({
+      alpha: true,
+      premultipliedAlpha: false,
+      dpr: Math.min(window.devicePixelRatio || 1, 2),
+    });
     const gl = renderer.gl;
     const canvas = gl.canvas as HTMLCanvasElement;
     canvas.style.width = "100%";
