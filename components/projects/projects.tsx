@@ -70,12 +70,19 @@ function ProjectCard({
   const { locale } = useLanguage();
   const localeKey = locale === "pt-BR" ? "pt" : "en";
   const Icon = project.icon;
+  const Wrapper = project.link ? "a" : "div";
+  const wrapperProps = project.link
+    ? { href: project.link, target: "_blank", rel: "noopener noreferrer" }
+    : {};
   return (
     <FadeIn
       delay={Math.min(index * 0.06, 0.3)}
       className="mb-6 break-inside-avoid md:mb-7"
     >
-      <article className="project-card flex cursor-pointer flex-col gap-4 rounded-3xl border border-foreground/8 bg-background p-3 sm:p-3.5">
+      <Wrapper
+        {...wrapperProps}
+        className={`project-card flex flex-col gap-4 rounded-3xl border border-foreground/8 bg-background p-3 sm:p-3.5 ${project.link ? "cursor-pointer" : ""}`}
+      >
         <header className="flex items-center gap-2.5 px-1 pt-2">
           <span className="border-foreground/10 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border bg-background">
             <Icon className="h-3.5 w-3.5 text-foreground" aria-hidden="true" />
@@ -113,7 +120,7 @@ function ProjectCard({
         <p className="px-1 pb-2 text-[12px] tracking-tight text-foreground/50">
           {project.meta[localeKey]}
         </p>
-      </article>
+      </Wrapper>
     </FadeIn>
   );
 }

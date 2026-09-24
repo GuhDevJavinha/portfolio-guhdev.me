@@ -4,8 +4,8 @@ export type CertificateEntry = {
   iconUrl?: string;
 };
 
-const AWS_ICON_URL =
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg";
+const AWS_ICON_URL = "/amazonwebservices-original-wordmark.svg";
+const GCP_ICON_URL = "/gcp-svgrepo-com.svg";
 
 export const CERTIFICATE_ENTRIES: CertificateEntry[] = [
   {
@@ -26,6 +26,6 @@ export const CERTIFICATE_ENTRIES: CertificateEntry[] = [
   {
     name: "Google Cloud Computing Foundations Certificate",
     institution: "Google",
-    iconUrl: "https://cdn.simpleicons.org/google",
+    iconUrl: GCP_ICON_URL,
   },
 ];

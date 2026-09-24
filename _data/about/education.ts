@@ -5,6 +5,7 @@ export type EducationEntry = {
   degree: LocalizedText;
   period: string;
   slug?: string;
+  iconUrl?: string;
 };
 
 export const EDUCATION_ENTRIES: EducationEntry[] = [
@@ -15,5 +16,6 @@ export const EDUCATION_ENTRIES: EducationEntry[] = [
       en: "Associate Degree in Systems Analysis and Development",
     },
     period: "2023 – 2026",
+    iconUrl: "/unip-163.svg",
   },
 ];

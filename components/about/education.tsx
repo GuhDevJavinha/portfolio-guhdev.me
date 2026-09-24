@@ -51,7 +51,16 @@ function SchoolLogo({ entry }: { entry: EducationEntry }): ReactNode {
       aria-hidden="true"
       style={{ borderRadius: 14 }}
     >
-      {entry.slug ? (
+      {entry.iconUrl ? (
+        <img
+          src={entry.iconUrl}
+          alt=""
+          width={24}
+          height={24}
+          className="h-6 w-6"
+          draggable={false}
+        />
+      ) : entry.slug ? (
         <img
           src={`https://cdn.simpleicons.org/${entry.slug}`}
           alt=""
