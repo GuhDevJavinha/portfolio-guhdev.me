@@ -1,4 +1,4 @@
-import { Bot, ShieldCheck, TrendingDown, Workflow } from "lucide-react";
+import { Bot, GraduationCap, ShieldCheck, TrendingDown, Workflow } from "lucide-react";
 import type { ComponentType } from "react";
 
 import type { LocalizedText } from "@/_data/i18n/types";
@@ -110,6 +110,29 @@ export const PROJECTS: Project[] = [
     imageAlt: {
       pt: "Tela do CRM Active",
       en: "Active CRM dashboard",
+    },
+  },
+  {
+    id: "aws-approve",
+    icon: GraduationCap,
+    iconLabel: "AWS Approve",
+    title: {
+      pt: "Aplicação de estudos com conceitos e simulados para a certificação AWS.",
+      en: "Study app with concepts and practice exams for the AWS certification.",
+    },
+    description: {
+      pt: "Desenvolvi o AWS Approve para ajudar a passar na prova de certificação AWS, reunindo conceitos e simulados de prática em um só lugar.",
+      en: "I built AWS Approve to help people pass the AWS certification exam, bringing together concepts and practice exams in one place.",
+    },
+    meta: {
+      pt: "Desenvolvedor Fullstack",
+      en: "Fullstack Developer",
+    },
+    imageRatio: 1903 / 900,
+    image: "/projects/awsApprove.png",
+    imageAlt: {
+      pt: "Tela de login do AWS Approve",
+      en: "AWS Approve login screen",
     },
   },
 ];
