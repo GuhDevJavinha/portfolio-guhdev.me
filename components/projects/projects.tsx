@@ -1,25 +1,25 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
-import type { ReactNode } from "react";
+import { ChevronDown } from "lucide-react";
+import { motion } from "motion/react";
+import { useState, type ReactNode } from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 import { PROJECTS, type Project } from "@/_data/projects/projects";
 import { useLanguage } from "@/_data/i18n/language-provider";
 import { FadeIn } from "@/components/ui/motion-primitives";
 
+const PREVIEW_COUNT = 2;
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 export type ProjectsProps = {
   withHeadline?: boolean;
-  viewMoreVisible?: boolean;
 };
 
-export function Projects({
-  withHeadline = false,
-  viewMoreVisible = false,
-}: ProjectsProps): ReactNode {
+export function Projects({ withHeadline = false }: ProjectsProps): ReactNode {
   const { t } = useLanguage();
-  const items = viewMoreVisible ? PROJECTS.slice(0, 4) : PROJECTS;
+  const professional = PROJECTS.filter((p) => p.category === "professional");
+  const personal = PROJECTS.filter((p) => p.category === "personal");
 
   return (
     <section className="relative w-full">
@@ -35,28 +35,68 @@ export function Projects({
           </FadeIn>
         ) : null}
 
-        <div className="columns-1 gap-6 md:columns-2 md:gap-7">
-          {items.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
-          ))}
-        </div>
-
-        {viewMoreVisible ? (
-          <div className="mt-12 flex justify-center sm:mt-16">
-            <Link
-              href="/projects"
-              className="border border-foreground/8 focus-ring group inline-flex cursor-pointer items-center gap-2 rounded-xl bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-foreground/5"
-            >
-              {t.projects.viewAll}
-              <ArrowRight
-                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
-                aria-hidden="true"
-              />
-            </Link>
-          </div>
-        ) : null}
+        <ProjectSection heading={t.projects.professionalHeading} projects={professional} />
+        <ProjectSection
+          heading={t.projects.personalHeading}
+          projects={personal}
+          className="mt-10 sm:mt-14"
+        />
       </div>
     </section>
+  );
+}
+
+function ProjectSection({
+  heading,
+  projects,
+  className,
+}: {
+  heading: string;
+  projects: Project[];
+  className?: string | undefined;
+}): ReactNode {
+  const { t } = useLanguage();
+  const [expanded, setExpanded] = useState(false);
+
+  if (projects.length === 0) return null;
+  const items = expanded ? projects : projects.slice(0, PREVIEW_COUNT);
+  const hiddenCount = projects.length - PREVIEW_COUNT;
+
+  return (
+    <motion.div layout="position" transition={{ duration: 1, ease: EASE }} className={className}>
+      <h3 className="mb-5 text-[13px] font-semibold tracking-wide text-foreground/50 uppercase">
+        {heading}
+      </h3>
+      <motion.div
+        layout
+        transition={{ duration: 1, ease: EASE }}
+        className="columns-1 gap-6 md:columns-2 md:gap-7"
+      >
+        {items.map((project, index) => (
+          <ProjectCard key={project.id} project={project} index={index} />
+        ))}
+      </motion.div>
+
+      {hiddenCount > 0 ? (
+        <motion.button
+          layout="position"
+          transition={{ duration: 1, ease: EASE }}
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          aria-expanded={expanded}
+          className="focus-ring text-foreground mt-6 flex w-full cursor-pointer items-center justify-center gap-1.5 bg-transparent text-[15px] font-medium tracking-tight"
+        >
+          {expanded ? t.projects.showLess : t.projects.showMore(hiddenCount)}
+          <motion.span
+            animate={{ rotate: expanded ? 180 : 0 }}
+            transition={{ duration: 0.25 }}
+            className="inline-flex"
+          >
+            <ChevronDown className="h-4 w-4" aria-hidden="true" />
+          </motion.span>
+        </motion.button>
+      ) : null}
+    </motion.div>
   );
 }
 
@@ -76,6 +116,7 @@ function ProjectCard({
     : {};
   return (
     <FadeIn
+      layout
       delay={Math.min(index * 0.06, 0.3)}
       className="mb-6 break-inside-avoid md:mb-7"
     >

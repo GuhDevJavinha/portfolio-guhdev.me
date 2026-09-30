@@ -34,10 +34,13 @@ export const enUS: Dictionary = {
     headline: "My projects",
     subtitle:
       "From playful experiments to thoughtful systems, a look at the work I'm proud to have shipped.",
-    viewAll: "View all projects",
     pageHeading: "My recent work",
     pageSubtitle:
       "Experiments, collaborations, and projects I'm especially proud to have shipped.",
+    professionalHeading: "Professional work",
+    personalHeading: "Personal projects",
+    showMore: (hiddenCount) => `Show ${hiddenCount} more`,
+    showLess: "Show less",
   },
   about: {
     greeting: "Hello! I'm",

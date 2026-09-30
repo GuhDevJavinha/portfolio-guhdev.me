@@ -9,15 +9,18 @@ export function FadeIn({
   children,
   delay = 0,
   duration = 0.8,
+  layout = false,
   className,
 }: {
   children: ReactNode;
   delay?: number;
   duration?: number;
+  layout?: boolean;
   className?: string;
 }): ReactNode {
   return (
     <motion.div
+      layout={layout}
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration, delay, ease: EASE }}

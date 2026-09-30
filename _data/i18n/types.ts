@@ -42,9 +42,12 @@ export type Dictionary = {
   projects: {
     headline: string;
     subtitle: string;
-    viewAll: string;
     pageHeading: string;
     pageSubtitle: string;
+    professionalHeading: string;
+    personalHeading: string;
+    showMore: (hiddenCount: number) => string;
+    showLess: string;
   };
   about: {
     greeting: string;

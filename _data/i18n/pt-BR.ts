@@ -34,10 +34,13 @@ export const ptBR: Dictionary = {
     headline: "Meus projetos",
     subtitle:
       "De experimentos divertidos a sistemas bem pensados, um panorama do trabalho que tenho orgulho de ter entregado.",
-    viewAll: "Ver todos os projetos",
     pageHeading: "Meus trabalhos recentes",
     pageSubtitle:
       "Experimentos, colaborações e projetos dos quais tenho especial orgulho.",
+    professionalHeading: "Trabalhos reais",
+    personalHeading: "Projetos pessoais",
+    showMore: (hiddenCount) => `Mostrar mais ${hiddenCount}`,
+    showLess: "Mostrar menos",
   },
   about: {
     greeting: "Olá! Eu sou",

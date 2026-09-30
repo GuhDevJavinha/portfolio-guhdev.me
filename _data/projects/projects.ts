@@ -1,10 +1,22 @@
-import { Bot, GraduationCap, ShieldCheck, TrendingDown, Workflow } from "lucide-react";
+import {
+  Bot,
+  GraduationCap,
+  Megaphone,
+  Share2,
+  ShieldCheck,
+  TrendingDown,
+  TrendingUp,
+  Workflow,
+} from "lucide-react";
 import type { ComponentType } from "react";
 
 import type { LocalizedText } from "@/_data/i18n/types";
 
+export type ProjectCategory = "professional" | "personal";
+
 export type Project = {
   id: string;
+  category: ProjectCategory;
   icon: ComponentType<{ className?: string }>;
   iconLabel: string;
   title: LocalizedText;
@@ -19,6 +31,7 @@ export type Project = {
 export const PROJECTS: Project[] = [
   {
     id: "vitalmark",
+    category: "professional",
     icon: ShieldCheck,
     iconLabel: "VitalMark",
     title: {
@@ -43,6 +56,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "bsp-system",
+    category: "professional",
     icon: TrendingDown,
     iconLabel: "BSP System",
     title: {
@@ -67,6 +81,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "autonegocia",
+    category: "professional",
     icon: Bot,
     iconLabel: "Autonegocia",
     title: {
@@ -91,6 +106,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "active",
+    category: "professional",
     icon: Workflow,
     iconLabel: "Active",
     title: {
@@ -113,7 +129,33 @@ export const PROJECTS: Project[] = [
     },
   },
   {
+    id: "isaias-consultoria",
+    category: "professional",
+    icon: TrendingUp,
+    iconLabel: "Isaías Consultoria",
+    title: {
+      pt: "Landing page para captação de leads de um consultor financeiro.",
+      en: "Lead-generation landing page for a financial consultant.",
+    },
+    description: {
+      pt: "Desenvolvi a landing page da Isaías Consultoria para captação de leads, com o GCP adicionando automaticamente cada lead em uma planilha do Excel. Stack em Next.js e GCP.",
+      en: "I built the Isaías Consultoria landing page for lead generation, with GCP automatically adding each lead to an Excel spreadsheet. Next.js and GCP stack.",
+    },
+    meta: {
+      pt: "Desenvolvedor Fullstack, Next.js & GCP",
+      en: "Fullstack Developer, Next.js & GCP",
+    },
+    imageRatio: 1893 / 904,
+    image: "/projects/isaias-consultoria.png",
+    imageAlt: {
+      pt: "Página inicial da Isaías Consultoria",
+      en: "Isaías Consultoria landing page",
+    },
+    link: "https://isaias-consultoria.vercel.app/",
+  },
+  {
     id: "aws-approve",
+    category: "personal",
     icon: GraduationCap,
     iconLabel: "AWS Approve",
     title: {
@@ -134,5 +176,56 @@ export const PROJECTS: Project[] = [
       pt: "Tela de login do AWS Approve",
       en: "AWS Approve login screen",
     },
+    link: "https://aws-approve.vercel.app/",
+  },
+  {
+    id: "omnicorp",
+    category: "personal",
+    icon: Megaphone,
+    iconLabel: "Omnicorp",
+    title: {
+      pt: "Landing page para captura de leads e vitrine de produtos e serviços.",
+      en: "Landing page for lead capture and a showcase of products and services.",
+    },
+    description: {
+      pt: "Desenvolvi a Omnicorp, uma landing page voltada para captura de leads e apresentação de produtos e serviços. Stack em Next.js.",
+      en: "I built Omnicorp, a landing page focused on lead capture and showcasing products and services. Next.js stack.",
+    },
+    meta: {
+      pt: "Desenvolvedor Fullstack, Next.js",
+      en: "Fullstack Developer, Next.js",
+    },
+    imageRatio: 1903 / 895,
+    image: "/projects/omnicorp.png",
+    imageAlt: {
+      pt: "Página inicial da Omnicorp",
+      en: "Omnicorp landing page",
+    },
+    link: "https://omnicorp-lp.vercel.app/",
+  },
+  {
+    id: "omnicast",
+    category: "personal",
+    icon: Share2,
+    iconLabel: "OmniCast",
+    title: {
+      pt: "Aplicativo instalável para conectar e publicar em todas as redes sociais.",
+      en: "Installable app to connect and publish to every social network.",
+    },
+    description: {
+      pt: "Desenvolvi o OmniCast, um hub de redes sociais instalável feito em Electron.js e Java, para conectar e publicar em todas as redes a partir de um só lugar.",
+      en: "I built OmniCast, an installable social media hub made with Electron.js and Java, to connect and publish to every network from one place.",
+    },
+    meta: {
+      pt: "Desenvolvedor Fullstack, Electron.js & Java",
+      en: "Fullstack Developer, Electron.js & Java",
+    },
+    imageRatio: 1903 / 907,
+    image: "/projects/omnicast.png",
+    imageAlt: {
+      pt: "Página inicial do OmniCast",
+      en: "OmniCast landing page",
+    },
+    link: "https://omnicast-lp.vercel.app/",
   },
 ];
