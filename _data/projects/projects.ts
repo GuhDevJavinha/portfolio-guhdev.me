@@ -171,7 +171,7 @@ export const PROJECTS: Project[] = [
       en: "Fullstack Developer",
     },
     imageRatio: 1903 / 900,
-    image: "/projects/awsApprove.png",
+    image: "/projects/awsApprove.webp",
     imageAlt: {
       pt: "Tela de login do AWS Approve",
       en: "AWS Approve login screen",
